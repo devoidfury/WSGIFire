@@ -18,7 +18,7 @@ def dispatcher(request, url_seq):
         return parse_url(rel_url)
     except NoMatchingURLException as error:
         dispatch_error = error
-        if rel_url[-1] != r'/':
+        if rel_url and rel_url[-1] != r'/':
             try:
                 return parse_url("".join([rel_url,r'/']))
             except NoMatchingURLException as error:

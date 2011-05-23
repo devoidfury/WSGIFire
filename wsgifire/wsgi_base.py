@@ -1,7 +1,7 @@
 from collections import UserDict
 from cgi import parse_qs, escape
+from wsgifire.settings import settings
 from wsgifire.dispatcher import dispatcher
-from wsgifire.internal_views import list_request
 
 # Status code dict from Django
 # See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
@@ -97,7 +97,7 @@ class Response(object):
 
     
     def body(self):
-        url_seq = ((r'^test/$', list_request),(r'^testing2/$', list_request))
+        url_seq = settings.URLS
         return dispatcher(self.request,url_seq)
 
     def send_response(self):

@@ -1,4 +1,0 @@
-from wsgifire.execution_handlers.devserver import runserver
-from wsgifire.wsgi_base import wsgi_application_handler
-
-runserver(wsgi_application_handler)
