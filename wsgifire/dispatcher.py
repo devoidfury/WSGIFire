@@ -1,7 +1,7 @@
-import importlib, re
+import re
 from wsgifire.settings import settings
 from wsgifire.exceptions import NoMatchingURLException
-from wsgifire.internal_views import error_view
+from wsgifire.helpers import func_from_str
 
 def dispatcher(request, url_seq):
     def parse_url(rel_url):
@@ -25,9 +25,8 @@ def dispatcher(request, url_seq):
             except NoMatchingURLException as error:
                 dispatch_error = error
     if settings.DEBUG:
-        return error_view(request,dispatch_error)
-    
-    func = settings.VIEW_404.split('.')[-1]
-    mod_name = ".".join(settings.VIEW_404.split('.')[:-1])
-    mod = __import__(mod_name,fromlist=[func])
-    return getattr(mod,func)(request)
+        view_func = func_from_str(settings.DEBUG_ERROR_VIEW)
+        return view_func(request,dispatch_error)
+
+    view_func = func_from_str(settings.VIEW_404)
+    return view_func(request)

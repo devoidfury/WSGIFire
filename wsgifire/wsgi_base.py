@@ -90,10 +90,10 @@ class Response(object):
 
     # These are HTTP headers expected by the client.
     # They must be wrapped as a list of tupled pairs:
-    # [(Header name, Header value)].
+    # [(Header name, Header value)]
     @property
     def get_final_headers(self):
-        self.headers['Content-Length'] = str(len(self.body()))
+        self.headers['Content-Length'] = str(len(self.body))
         return [(key,self.headers[key]) for key in self.headers]
 
 
@@ -104,6 +104,6 @@ class Response(object):
 
 def wsgi_application_handler(environ, start_response):
     request = Request(environ)
-    response_body = dispatcher(self.request,settings.URLS)
+    response_body = dispatcher(request,settings.URLS)
     response = Response(response_body,request,start_response)
     return response.send_response()
