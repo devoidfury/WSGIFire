@@ -83,8 +83,9 @@ class Response(object):
     _status = " ".join([str(status_code),STATUS_CODE_TEXT[200]])
     headers = {'Content-Type': 'text/plain'}
 
-    def __init__(self,request,callback):
+    def __init__(self,body,request,callback):
         self._start_response = callback
+        self.body = body
         self.request = request
 
     # These are HTTP headers expected by the client.
@@ -95,17 +96,14 @@ class Response(object):
         self.headers['Content-Length'] = str(len(self.body()))
         return [(key,self.headers[key]) for key in self.headers]
 
-    
-    def body(self):
-        url_seq = settings.URLS
-        return dispatcher(self.request,url_seq)
 
     def send_response(self):
         self._start_response(self._status, self.get_final_headers)
-        return [self.body().encode('utf-8')]
+        return [self.body.encode('latin-1')]
 
 
 def wsgi_application_handler(environ, start_response):
     request = Request(environ)
-    response = Response(request,start_response)
+    response_body = dispatcher(self.request,settings.URLS)
+    response = Response(response_body,request,start_response)
     return response.send_response()

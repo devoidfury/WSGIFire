@@ -1,0 +1,5 @@
+* Separate url handling from responses.
+
+* Separate views from responses.
+  - I'm thinking I'd like views to return a Response.
+
