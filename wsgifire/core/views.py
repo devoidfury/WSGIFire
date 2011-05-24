@@ -23,8 +23,10 @@ def error(request,error):
 
     response_body = """
 <html>
+<head><title>WSGIFire Debug Error</title></head>
 <body>
 <h1>Error: %(error)s</h1>
+<p>Set <em>DEBUG = False</em> in your settings file to receive normal errors.</p>
 <h3>Traceback:</h3>
 %(traceback)s
 <h3>The request is</h3>

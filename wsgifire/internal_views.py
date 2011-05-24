@@ -20,4 +20,6 @@ def list_request(request):
     return response_body
 
 def error404(request):
-    return "404 Error: the page you requested does not exist."
+    return """<html><head><title>404: Page Not Found</title></head>
+    <body><h1>404 Error:</h1><p>The page you requested does not exist.</p>
+    </body</html>"""
