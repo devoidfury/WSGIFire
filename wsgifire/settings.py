@@ -5,6 +5,11 @@ import os
 ENVIRONMENT_VARIABLE = 'WSGIFIRE_SETTINGS_MODULE'
 
 class Settings(object):
+    """
+    This class sets it's attributes to wsgifire.default_settings and
+    then does the same for <project>.settings, overwriting
+    any of the defaults.
+    """
     def __init__(self):
         try:
             settings_module = os.environ[ENVIRONMENT_VARIABLE]
@@ -25,4 +30,5 @@ class Settings(object):
                 setting_value = getattr(mod,setting)
                 setattr(self,setting,setting_value)
 
+# Create an instance of Settings and hand it out like candy.
 settings = Settings()

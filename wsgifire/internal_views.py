@@ -1,7 +1,6 @@
 
-
 def list_request(request):
-    """Test view that prints out the environ"""
+    """Temporary testing view."""
     items = ['%s: %s' % (key, value) for key, value in sorted(request.items())]
 
     get = ""
@@ -20,6 +19,7 @@ def list_request(request):
     return response_body
 
 def error404(request):
+    """Basic 404 message."""
     return """<html><head><title>404: Page Not Found</title></head>
     <body><h1>404 Error:</h1><p>The page you requested does not exist.</p>
     </body</html>"""

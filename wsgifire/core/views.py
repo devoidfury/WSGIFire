@@ -1,5 +1,6 @@
 import traceback
 def error(request,error):
+    """Debug view that prints out the error and request environ."""
     items = ['%s: %s<br>' % (key, value) for key, value in sorted(request.items())]
 
     error_tb = traceback.extract_tb(error.__traceback__, 20)

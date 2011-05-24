@@ -3,6 +3,11 @@ import argparse
 import os, sys
 
 def command_handler(settings):
+    """
+    Handles commands from manage.py.
+    Currently only runserver command supported, which runs a
+    local simple http server serving the project for development.
+    """
     parser = argparse.ArgumentParser(description='WSGIFire management tool.')
     parser.add_argument('runserver', help='Run the integrated development server.')
 
