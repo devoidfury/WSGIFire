@@ -1,6 +1,7 @@
 WSGIFire: A web framework for Python 3
 
-A web microframework for use with python 3.2+. The project is very early in development, nowhere near production-ready, so if you aren't a hobbyist there's nothing to see here.
+A web microframework for use with python 3.2+. The project is very early in development,
+nowhere near production-ready, so if you aren't a hobbyist there's nothing to see here.
 What better way to get into py3k and wsgi than to write a web framework?
 
 Notes:

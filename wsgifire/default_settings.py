@@ -17,7 +17,7 @@ DEBUG = False
 
 # Default error view. Set this in your project's settings
 # to use a different debugging error view.
-DEBUG_ERROR_VIEW = 'wsgifire.core.views.error'
+DEBUG_ERROR_VIEW = 'wsgifire.middleware.debug_view.error'
 
 # Default 404 error view. Set this in your project's settings
 # to use a different 404 view.
