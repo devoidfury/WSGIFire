@@ -1,7 +1,5 @@
 from collections import UserDict
 from cgi import parse_qs, escape
-from wsgifire.settings import settings
-from wsgifire.dispatcher import dispatcher
 
 # Status code dict from Django
 # See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
@@ -100,10 +98,3 @@ class Response(object):
     def send_response(self):
         self._start_response(self._status, self.get_final_headers)
         return [self.body.encode('latin-1')]
-
-
-def wsgi_application_handler(environ, start_response):
-    request = Request(environ)
-    response_body = dispatcher(request,settings.URLS)
-    response = Response(response_body,request,start_response)
-    return response.send_response()

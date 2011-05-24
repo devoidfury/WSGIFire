@@ -5,5 +5,5 @@ except ImportError as error:
     sys.stderr.write("""Error: Can't find the file 'settings.py' in the directory containing %r.""" % __file__)
     sys.exit(1)
 
-from wsgifire.execution_handlers.base import command_handler
+from wsgifire.management.command_handler import command_handler
 command_handler(settings)
