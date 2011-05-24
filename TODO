@@ -1,5 +1,5 @@
-* Separate url handling from responses.
+* views should return a Response (possibly take one as an arg).
 
-* Separate views from responses.
-  - I'm thinking I'd like views to return a Response.
+* Tear out exception handling and views from main application workings and use middleware.
 
+* Make request/response objects thread-local to prepare for a realistic server environment.
