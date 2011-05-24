@@ -81,7 +81,7 @@ class Response(object):
     # HTTP response code and message
     status_code = 200
     _status = " ".join([str(status_code),STATUS_CODE_TEXT[200]])
-    headers = {'Content-Type': 'text/plain'}
+    headers = {'Content-Type': 'text/html'}
 
     def __init__(self,body,request,callback):
         self._start_response = callback

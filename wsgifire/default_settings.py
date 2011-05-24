@@ -6,5 +6,5 @@ URLS = (
 )
 
 DEBUG = False
-DEBUG_ERROR_VIEW = 'wsgifire.internal_views.error_view'
+DEBUG_ERROR_VIEW = 'wsgifire.core.views.error'
 VIEW_404 = 'wsgifire.internal_views.error404'
