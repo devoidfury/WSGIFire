@@ -85,13 +85,15 @@ class Request(UserDict):
 class Response(object):
     # HTTP response code and message
     status_code = 200
-    _status = " ".join([str(status_code),STATUS_CODE_TEXT[200]])
     headers = {'Content-Type': 'text/html'}
     callback = None
 
-    def __init__(self,body,request):
+    def __init__(self,body=""):
         self.body = body
-        self.request = request
+
+    @property
+    def _status(self):
+        return " ".join([str(self.status_code),STATUS_CODE_TEXT[self.status_code]])
 
     # These are HTTP headers expected by the client.
     # They must be wrapped as a list of tupled pairs:

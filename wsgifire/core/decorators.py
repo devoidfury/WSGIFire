@@ -7,5 +7,5 @@ def simple_response(view_func):
     """
     def _response(request,*args,**kwargs):
         response_body = view_func(request,*args,**kwargs)
-        return Response(response_body,request)
+        return Response(response_body)
     return wraps(view_func)(_response)

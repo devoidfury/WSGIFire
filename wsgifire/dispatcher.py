@@ -1,5 +1,6 @@
 import re
 from wsgifire.helpers import func_from_str
+from wsgifire.core.helpers import permanent_redirect
 from wsgifire.exceptions import NoMatchingURL, ViewFunctionDoesNotExist
 
 def dispatcher(request, url_seq):
@@ -29,10 +30,7 @@ def dispatcher(request, url_seq):
         return parse_url(rel_url)
     except NoMatchingURL:
         # If the path didn't match and the path doesn't end in a slash (excluding GET params),
-        # try to match it again appending a slash.
+        # try redirecting to the same url with a slash appended.
         if rel_url and rel_url[-1] != r'/':
-            try:
-                return parse_url("".join([rel_url,r'/']))
-            except NoMatchingURL:
-                pass
+            return permanent_redirect("".join([request['wsgi.url_scheme'], r'://', request['HTTP_HOST'],r'/',rel_url,r'/'])), None
         raise NoMatchingURL(rel_url)
