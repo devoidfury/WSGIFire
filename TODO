@@ -1,4 +1,3 @@
-* views should return a Response (possibly take one as an arg).
 
 * Make request/response objects thread-local to prepare for a realistic server environment.
 
