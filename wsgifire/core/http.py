@@ -71,7 +71,7 @@ class Request(UserDict):
     def _clean_query(dirty_qs):
         clean_qs = {}
         for key, values in dirty_qs.items():
-            clean_qs[key] = [escape(str(v)) for v in values]
+            clean_qs[str(key)] = [escape(str(v)) for v in values]
         return dict((k,clean_qs[k]) for k in clean_qs)
 
 
