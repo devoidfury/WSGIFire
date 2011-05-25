@@ -3,7 +3,7 @@ from wsgifire.core.decorators import simple_response
 @simple_response
 def add_numbers_get(request):
     """Basic view that adds two numbers inputed by user."""
-    if (request.GET):
+    if request.GET:
         first = int(request.GET['number1'][0])
         second = int(request.GET['number2'][0])
         if first and second:
@@ -24,7 +24,7 @@ def add_numbers_get(request):
 @simple_response
 def add_numbers_post(request):
     """Basic view that adds two numbers inputed by user."""
-    if (request.POST):
+    if request.POST:
         first = int(request.POST['number1'][0])
         second = int(request.POST['number2'][0])
         if first and second:
