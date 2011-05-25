@@ -1,7 +1,10 @@
 
 def func_from_str(mod_string):
     """Return the func/class/etc referenced by <mod_string>, which should
-        be a valid module path."""
+        be a valid module path. This is used in importing modules set in
+        strings in settings files, providing a flexible interface allowing
+        some internals to be swapped out easily, such as error views.
+        """
     func = mod_string.split('.')[-1]
     mod_name = ".".join(mod_string.split('.')[:-1])
     mod = __import__(mod_name,fromlist=[func])

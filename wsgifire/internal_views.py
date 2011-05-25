@@ -24,6 +24,12 @@ def error404(request):
     <body><h1>404 Error:</h1><p>The page you requested does not exist.</p>
     </body</html>"""
 
+def error500(request):
+    """Basic 500 message."""
+    return """<html><head><title>500: Internal Server Error</title></head>
+    <body><h1>500 Error:</h1><p>The sever encountered a problem.</p>
+    </body</html>"""
+
 def it_worked(request):
     """Basic view to show server is working."""
     return "<html><body><h1>It worked!</h1></body></html>"
