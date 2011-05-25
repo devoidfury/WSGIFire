@@ -21,7 +21,7 @@ class DebugMiddleware(object):
 
             if settings.DEBUG:
                 return [func_from_str(settings.DEBUG_ERROR_VIEW)(settings, environ, error_instance).encode('latin-1')]
-            return [func_from_str(standard_error)(None, error_instance).encode('latin-1')]
+            return [func_from_str(standard_error)(None).encode('latin-1')]
 
     def __init__(self,application):
         self._wrapped = application
