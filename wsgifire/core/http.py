@@ -56,7 +56,7 @@ class Request(UserDict):
         # Cleans and sets GET and POST dicts from request.QUERY_STRING. Also escapes user input to avoid script
         # injection, see http://webpython.codepoint.net/wsgi_request_parsing_get
         dirty_qs = parse_qs(self.get('QUERY_STRING'))
-        self.GET = self._clean_query(dirty_qs)
+        self.GET = self._clean_get(dirty_qs)
 
         # the environment variable CONTENT_LENGTH may be empty or missing
         try:
@@ -65,10 +65,17 @@ class Request(UserDict):
             request_body_size = 0
         request_body = self['wsgi.input'].read(request_body_size)
         dirty_qs = parse_qs(request_body)
-        self.POST = self._clean_query(dirty_qs)
+        self.POST = self._clean_post(dirty_qs)
 
     @staticmethod
-    def _clean_query(dirty_qs):
+    def _clean_get(dirty_qs):
+        clean_qs = {}
+        for key, values in dirty_qs.items():
+            clean_qs[key] = [escape(v) for v in values]
+        return dict((k,clean_qs[k]) for k in clean_qs)
+
+    @staticmethod
+    def _clean_post(dirty_qs):
         clean_qs = {}
         for key, values in dirty_qs.items():
             clean_qs[str(key,'utf-8')] = [escape(str(v,'utf-8')) for v in values]
