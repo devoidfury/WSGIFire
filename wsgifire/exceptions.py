@@ -4,6 +4,11 @@ class BaseWSGIFireException(Exception):
     pass
 
 
-class NoMatchingURLException(BaseWSGIFireException):
+class NoMatchingURL(BaseWSGIFireException):
     """Dispatcher error, the requested path did not match any of the URLS defined."""
+    pass
+
+
+class ViewFunctionDoesNotExist(BaseWSGIFireException):
+    """String to view defined for matching request in URLS does not exist."""
     pass

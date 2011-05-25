@@ -23,3 +23,7 @@ def error404(request):
     return """<html><head><title>404: Page Not Found</title></head>
     <body><h1>404 Error:</h1><p>The page you requested does not exist.</p>
     </body</html>"""
+
+def it_worked(request):
+    """Basic view to show server is working."""
+    return "<html><body><h1>It worked!</h1></body></html>"

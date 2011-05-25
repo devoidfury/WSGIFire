@@ -1,6 +1,5 @@
-from wsgifire.exceptions import NoMatchingURLException
+from wsgifire.exceptions import NoMatchingURL
 from wsgifire.settings import settings
-from wsgifire.core.http import Request
 from wsgifire.helpers import func_from_str
 
 class DebugMiddleware(object):
@@ -10,7 +9,7 @@ class DebugMiddleware(object):
         try:
             return self._wrapped(environ,start_response)
         except Exception as error_instance:
-            if isinstance(error_instance,NoMatchingURLException):
+            if isinstance(error_instance,NoMatchingURL):
                 status = '404 NOT FOUND'
                 standard_error = settings.VIEW_404
             else:
@@ -21,8 +20,7 @@ class DebugMiddleware(object):
             start_response(status, response_headers)
 
             if settings.DEBUG:
-                debug_request = Request(environ)
-                return [func_from_str(settings.DEBUG_ERROR_VIEW)(debug_request, error_instance).encode('latin-1')]
+                return [func_from_str(settings.DEBUG_ERROR_VIEW)(settings, environ, error_instance).encode('latin-1')]
             return [func_from_str(standard_error)(None, error_instance).encode('latin-1')]
 
     def __init__(self,application):

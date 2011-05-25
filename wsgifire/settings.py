@@ -29,6 +29,5 @@ class Settings(object):
             for setting in dir(mod):
                 setting_value = getattr(mod,setting)
                 setattr(self,setting,setting_value)
-
 # Create an instance of Settings and hand it out like candy.
 settings = Settings()

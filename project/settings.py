@@ -1,8 +1,7 @@
-from wsgifire.internal_views import list_request
 
 URLS = (
-    (r'^test/$', list_request),
-    (r'^testing2/$', list_request)
+    (r'^test/$', 'wsgifire.internal_views.list_request'),
+    (r'^error-test/$', 'fake.fake.fake'),
 )
 
 DEBUG = True
