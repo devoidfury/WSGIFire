@@ -21,9 +21,7 @@ def dispatcher(request, url_seq):
                     view_error.with_traceback(error_instance.__traceback__)
                     raise view_error
                 else:
-                    if args:
-                        return return_view(request,args)
-                    return return_view(request)
+                    return return_view, args
         raise NoMatchingURL(rel_url)
 
     rel_url = request['PATH_INFO'][1:]

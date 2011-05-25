@@ -1,3 +1,6 @@
+from wsgifire.core.decorators import simple_response
+
+@simple_response
 def add_numbers_get(request):
     """Basic view that adds two numbers inputed by user."""
     if (request.GET):
@@ -18,6 +21,7 @@ def add_numbers_get(request):
         response_body += '\t</form>\n</body>\n</html>'
     return response_body
 
+@simple_response
 def add_numbers_post(request):
     """Basic view that adds two numbers inputed by user."""
     if (request.POST):

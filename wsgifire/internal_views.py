@@ -1,4 +1,6 @@
+from wsgifire.core.decorators import simple_response
 
+@simple_response
 def list_request(request):
     """Temporary testing view."""
     items = ['%s: %s' % (key, value) for key, value in sorted(request.items())]
@@ -18,12 +20,14 @@ def list_request(request):
     response_body = 'The request is \n\n%s\n\nGET:\n%s\n\nPOST:\n%s' % ("\n".join(items), get, post)
     return response_body
 
+@simple_response
 def error404(request):
     """Basic 404 message."""
     return """<html><head><title>404: Page Not Found</title></head>
     <body><h1>404 Error:</h1><p>The page you requested does not exist.</p>
     </body</html>"""
 
+@simple_response
 def error500(request):
     """Basic 500 message."""
     return """<html><head><title>500: Internal Server Error</title></head>

@@ -80,9 +80,9 @@ class Response(object):
     status_code = 200
     _status = " ".join([str(status_code),STATUS_CODE_TEXT[200]])
     headers = {'Content-Type': 'text/html'}
+    callback = None
 
-    def __init__(self,body,request,callback):
-        self._start_response = callback
+    def __init__(self,body,request):
         self.body = body
         self.request = request
 
@@ -96,5 +96,5 @@ class Response(object):
 
 
     def send_response(self):
-        self._start_response(self._status, self.get_final_headers)
+        self.callback(self._status, self.get_final_headers)
         return [self.body.encode('latin-1')]
