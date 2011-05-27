@@ -28,15 +28,15 @@ def error(settings,environ,error):
 <html>
 <head><title>WSGIFire Debug Error</title></head>
 <body>
-<h1>Error: %(error)s</h1>
+<h1>Error: {error!r}</h1>
 <p>Set <em>DEBUG = False</em> in your settings file to receive normal errors.</p>
 <h3>Traceback:</h3>
-%(traceback)s
+{traceback}
 <h4>Settings:</h4>
-<div>%(str_settings)s</div>
+<div>{str_settings}</div>
 <h4>The request is</h4>
-<div>%(request)s</div>
+<div>{request}</div>
 </body>
-</html>""" % {'error': repr(error),'traceback':formatted_tb,'str_settings':"\n".join(formatted_settings),
-              'request':"\n".join(formatted_environ)}
+</html>""".format(error=error,traceback=formatted_tb,str_settings="\n".join(formatted_settings),
+              request="\n".join(formatted_environ))
     return response_body

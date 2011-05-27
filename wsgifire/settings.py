@@ -1,9 +1,8 @@
-
 import importlib
 import os
 
 ENVIRONMENT_VARIABLE = 'WSGIFIRE_SETTINGS_MODULE'
-
+# Some bits from django
 class Settings(object):
     """
     This class sets it's attributes to wsgifire.default_settings and
