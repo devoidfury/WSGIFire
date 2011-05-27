@@ -15,26 +15,28 @@ def error(settings,environ,error):
     formatted_tb = []
     for line in error_tb:
         formatted_tb.append("""
-        <p>In <em>{file}</em> line <strong>{line}</strong> in <em>{object}</em>:<br>
-        {trace_line}</p>""".format(
-            {'file': line[0],'line': str(line[1]),'object': line[2],'trace_line': line[3]})
-        )
+            <p>In <em>{file}</em> line <strong>{line}</strong> in <em>{object}</em>:
+            <br>{trace_line}</p>""".format(
+                 file=line[0],
+                 line=line[1],
+                 object=line[2],
+                 trace_line=line[3])
+            )
     formatted_tb = "".join(formatted_tb)
 
     response_body = """
 <html>
 <head><title>WSGIFire Debug Error</title></head>
 <body>
-<h1>Error: {error}</h1>
+<h1>Error: %(error)s</h1>
 <p>Set <em>DEBUG = False</em> in your settings file to receive normal errors.</p>
 <h3>Traceback:</h3>
-{traceback}
+%(traceback)s
 <h4>Settings:</h4>
-<div>{str_settings}</div>
+<div>%(str_settings)s</div>
 <h4>The request is</h4>
-<div>{request}</div>
+<div>%(request)s</div>
 </body>
-</html>""".format({'error': repr(error),'traceback':formatted_tb,
-                    'str_settings':"\n".join(formatted_settings),
-                    'request':"\n".join(formatted_environ)})
+</html>""" % {'error': repr(error),'traceback':formatted_tb,'str_settings':"\n".join(formatted_settings),
+              'request':"\n".join(formatted_environ)}
     return response_body
