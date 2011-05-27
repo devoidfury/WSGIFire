@@ -5,7 +5,6 @@ def func_from_str(mod_string):
         strings in settings files, providing a flexible interface allowing
         some internals to be swapped out easily, such as error views.
         """
-    func = mod_string.split('.')[-1]
-    mod_name = ".".join(mod_string.split('.')[:-1])
+    mod_name, sep, func = mod_string.rpartition('.')
     mod = __import__(mod_name,fromlist=[func])
     return getattr(mod,func)
