@@ -4,21 +4,10 @@ A web microframework for use with python 3.2+. The project is very early in deve
 nowhere near production-ready, so if you aren't a hobbyist there's nothing to see here.
 What better way to get into py3k and wsgi than to write a web framework?
 
+Goals for v 0.1.0:
+* thread-safe and test with mod_wsgi
+* basic documentation on usage
+* comprehensive testing
+
 Notes:
 The 'project' folder is a demo/testing application using WSGIFire.
-
-
-Copyright (C) 2011  Thomas Hunkapiller
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
