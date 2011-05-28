@@ -20,3 +20,6 @@ DEBUG_ERROR_VIEW = 'wsgifire.middleware.debug_view.error'
 # Default error views.
 VIEW_404 = 'wsgifire.internal_views.error404'
 VIEW_500 = 'wsgifire.internal_views.error500'
+
+TEMP_DIRECTORY = ''
+TEMPLATE_DIRS = []

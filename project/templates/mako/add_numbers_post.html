@@ -1,0 +1,14 @@
+<%inherit file="base.html"/>
+<%block name="page_title">Add numbers POST</%block>
+
+% if value:
+<h1>${value}</h1>
+% else:
+    % if message:
+            <em>${message}</em>
+    % endif
+<form method="post" action="">
+    <input name="number1" type="text" /><input name="number2" type="text" />
+    <input type="submit" />
+</form>
+% endif
