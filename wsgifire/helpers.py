@@ -1,3 +1,4 @@
+from importlib import import_module
 
 def func_from_str(mod_string):
     """
@@ -10,5 +11,5 @@ def func_from_str(mod_string):
     - `mod_string`: string that should resolve to a valid module.object path.
     """
     mod_name, sep, func = mod_string.rpartition('.')
-    mod = __import__(mod_name,fromlist=[func])
+    mod = import_module(mod_name)
     return getattr(mod,func)
