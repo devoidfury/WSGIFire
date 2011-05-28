@@ -1,7 +1,5 @@
 from wsgifire.settings import settings
-
 from mako.lookup import TemplateLookup
-
 
 if settings.TEMP_DIRECTORY:
     mako_lookup = TemplateLookup(directories=settings.TEMPLATE_DIRS,
@@ -11,4 +9,6 @@ else:
 
 def render_template(template_path, data):
     template = mako_lookup.get_template(template_path)
-    return template.render_unicode(**data)
+    if data:
+        return template.render_unicode(**data)
+    return template.render_unicode()
