@@ -1,9 +1,7 @@
-from io import StringIO
 from wsgifire.settings import settings
 
-from mako.template import Template
 from mako.lookup import TemplateLookup
-from mako.runtime import Context
+
 
 if settings.TEMP_DIRECTORY:
     mako_lookup = TemplateLookup(directories=settings.TEMPLATE_DIRS,
