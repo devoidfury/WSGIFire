@@ -4,7 +4,8 @@ from wsgifire.execution_handlers.helpers import setup_environ
 def command_handler(settings):
     """
     Handles commands from manage.py.
-    Currently only runserver command supported, which runs a
+
+    Currently only `runserver` command supported, which runs a
     local simple http server serving the project for development.
     """
     parser = argparse.ArgumentParser(description='WSGIFire management tool.')

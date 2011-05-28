@@ -4,7 +4,10 @@ from wsgifire.core.helpers import permanent_redirect
 from wsgifire.exceptions import NoMatchingURL, ViewFunctionDoesNotExist
 
 def dispatcher(request, url_seq):
-    """Match the requested url against patterns defined in settings.URLS, and return the view function.
+    """
+    Match the requested url against patterns defined in settings.URLS and
+    return the resulting view function.w
+
     Using this we can easily abstract URLs from project/filesystem layout.
     """
     def parse_url(rel_url):
