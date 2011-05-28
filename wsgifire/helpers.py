@@ -1,4 +1,6 @@
+from wsgifire.exceptions import ModuleDoesNotExist
 from importlib import import_module
+from importlib.machinery import PathFinder
 
 def func_from_str(mod_string):
     """
@@ -11,5 +13,13 @@ def func_from_str(mod_string):
     - `mod_string`: string that should resolve to a valid module.object path.
     """
     mod_name, sep, func = mod_string.rpartition('.')
-    mod = import_module(mod_name)
-    return getattr(mod,func)
+
+    loader = PathFinder.find_module(mod_name)
+
+    if loader:
+        mod = import_module(mod_name)
+        return getattr(mod,func)
+    else:
+        module_error = ModuleDoesNotExist(mod_string)
+        raise module_error     
+

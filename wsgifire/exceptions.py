@@ -12,3 +12,7 @@ class NoMatchingURL(BaseWSGIFireException):
 class ViewFunctionDoesNotExist(BaseWSGIFireException):
     """String for view defined in matching request in URLS does not exist."""
     pass
+
+class ModuleDoesNotExist(BaseWSGIFireException):
+    """String for module defined in matching request in URLS does not exist."""
+    pass
