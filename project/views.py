@@ -10,6 +10,7 @@ def landing(request):
 <p>This is an example WSGIFire project.</p>
 <h3>Check out other parts of the example:</h3>
 <ul>
+    <li><a href="/jinja2/">WSGIFire using Jinja2 templates</a></li>
     <li><a href="/mako/">WSGIFire using Mako templates</a></li>
     <li>
         <a href="/fake/">Example of a bad URL request.</a>

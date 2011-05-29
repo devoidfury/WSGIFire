@@ -1,0 +1,18 @@
+{% extends "jinja2/base.html" %}
+{% block page_title %}Add numbers POST{% endblock %}
+
+{% block content %}
+<p>Small demo of using forms with POST data and jinja2 templating</p>
+{% if value %}
+<h1>{{ value }}</h1>
+{% else %}
+    {% if message %}
+            <em>{{ message }}</em>
+    {% endif %}
+<form method="post" action="">
+    <input name="number1" type="text" /><input name="number2" type="text" />
+    <input type="submit" />
+</form>
+{% endif %}
+<p><a href="/jinja2/">Back to /jinja2/</a></p>
+{% endblock %}

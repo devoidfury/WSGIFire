@@ -2,7 +2,7 @@ from wsgifire.core.decorators import simple_response
 from wsgifire.extensions.templates.mako import render_template
 
 @simple_response
-def mako_home(request):
+def home(request):
     """Small demo using mako templating."""
     return render_template("mako/home.html",None)
 
