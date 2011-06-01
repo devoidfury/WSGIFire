@@ -44,4 +44,5 @@ def it_worked(request):
 @simple_response
 def static(request):
     """Handles static files"""
-    return FileWrapper(request['PATH_INFO'])
+    return_file = open(request['PATH_INFO'])
+    return FileWrapper(return_file)
