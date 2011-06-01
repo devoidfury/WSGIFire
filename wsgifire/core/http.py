@@ -109,4 +109,5 @@ class Response(object):
         return [self.body.encode('latin-1')]
 
 class StaticResponse(Response):
+    # HTTP response code and message
     
