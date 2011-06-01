@@ -1,5 +1,7 @@
 from wsgifire.core.decorators import simple_response
 from wsgiref.util import FileWrapper
+from wsgifire.settings import settings
+import os
 
 
 @simple_response
@@ -44,5 +46,5 @@ def it_worked(request):
 @simple_response
 def static(request):
     """Handles static files"""
-    return_file = open(request['PATH_INFO'])
+    return_file = open("".join([settings.MEDIA_DIRECTORY,request['PATH_INFO']]))
     return FileWrapper(return_file)

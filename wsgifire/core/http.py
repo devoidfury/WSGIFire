@@ -107,3 +107,6 @@ class Response(object):
     def send_response(self):
         self.callback(self._status, self.get_final_headers)
         return [self.body.encode('latin-1')]
+
+class StaticResponse(Response):
+    

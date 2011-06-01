@@ -20,3 +20,5 @@ URLS += (
 )
 
 TEMPLATE_DIRS = ['./templates']
+
+MEDIA_DIRECTORY = './media'
