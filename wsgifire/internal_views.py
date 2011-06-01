@@ -1,4 +1,6 @@
 from wsgifire.core.decorators import simple_response
+from wsgiref.util import FileWrapper
+
 
 @simple_response
 def list_request(request):
@@ -38,3 +40,8 @@ def error500(request):
 def it_worked(request):
     """Basic view to show server is working."""
     return "<html><body><h1>It worked!</h1></body></html>"
+
+@simple_response
+def static(request):
+    """Handles static files"""
+    return FileWrapper(request['PATH_INFO'])

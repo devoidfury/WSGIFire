@@ -15,4 +15,6 @@ URLS = (
 
 DEBUG = True
 
+URLS += ((r'^.*\.[ico|jpg|png|js|css|gif|svg|jpeg]', 'wsgifire.internal_views.static'))
+
 TEMPLATE_DIRS = ['./templates']
