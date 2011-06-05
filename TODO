@@ -4,3 +4,6 @@
 * sessions/authentication/cookies
 
 * create unit testing
+
+* Utility script that copies the project_template directory to wherever
+  the user wants to start their project.
